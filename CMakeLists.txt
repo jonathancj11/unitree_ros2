@@ -18,7 +18,6 @@ link_directories(src)
 
 # Lista de dependencias en bloque
 set(DEPENDENCY_LIST
-  unitree_go
   unitree_hg
   unitree_api
   rclcpp
@@ -28,7 +27,6 @@ set(DEPENDENCY_LIST
 
 # Buscar dependencias
 find_package(ament_cmake REQUIRED)
-find_package(unitree_go REQUIRED)
 find_package(unitree_hg REQUIRED)
 find_package(unitree_api REQUIRED)
 find_package(rclcpp REQUIRED)
