@@ -18,7 +18,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
-find_package(unitree_go REQUIRED)
+##find_package(unitree_go REQUIRED)
 find_package(unitree_hg REQUIRED)
 find_package(unitree_api REQUIRED)
 
@@ -26,14 +26,23 @@ find_package(unitree_api REQUIRED)
 # 2. Definir variable con la lista de dependencias ament
 #    (Para no repetir en cada ament_target_dependencies)
 # ---------------------------------------------
+## set(DEPENDENCY_LIST
+#  rclcpp
+#  std_msgs
+#  rosbag2_cpp
+#  unitree_go
+#  unitree_hg
+#  unitree_api
+# )
+
 set(DEPENDENCY_LIST
   rclcpp
   std_msgs
   rosbag2_cpp
-  unitree_go
   unitree_hg
   unitree_api
 )
+
 
 # ---------------------------------------------
 # 3. Incluir directorios (headers) y link-directories si hace falta
