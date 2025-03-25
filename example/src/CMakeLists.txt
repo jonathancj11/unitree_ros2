@@ -60,6 +60,8 @@ add_library(unitree_ros2 SHARED
   # Agrega aquí más .cpp que desees compartir en la librería
 )
 
+find_package(unitree_sdk2 REQUIRED PATHS /opt/unitree_robotics/lib/cmake/unitree_sdk2)
+
 ament_target_dependencies(unitree_ros2
   ${DEPENDENCY_LIST}
 )
