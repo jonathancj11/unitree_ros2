@@ -1,3 +1,10 @@
+# Incluir directorios e indicar libs si fuera necesario
+include_directories(include include/common include/nlohmann)
+link_directories(src)
+
+include_directories(/opt/unitree_robotics/include)
+link_directories(/opt/unitree_robotics/lib)
+
 cmake_minimum_required(VERSION 3.5)
 project(unitree_ros2)
 
@@ -12,18 +19,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# Incluir directorios e indicar libs si fuera necesario
-include_directories(include include/common include/nlohmann)
-link_directories(src)
-
-# Lista de dependencias en bloque
-set(DEPENDENCY_LIST
-  unitree_hg
-  unitree_api
-  rclcpp
-  std_msgs
-  rosbag2_cpp
-)
 
 # Buscar dependencias
 find_package(ament_cmake REQUIRED)
@@ -32,6 +27,35 @@ find_package(unitree_api REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
+find_package(unitree_go REQUIRED)
+
+
+message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
+
+
+# Lista de dependencias en bloque
+set(DEPENDENCY_LIST
+  unitree_hg
+  unitree_api
+  unitree_go
+  rclcpp
+  std_msgs
+  rosbag2_cpp
+)
+
+
+
+find_library(UNITREE_SDK2_LIB
+  NAMES unitree_sdk2
+  PATHS /opt/unitree_robotics/lib
+  message(STATUS "Se encontró unitree_sdk2 en: ${UNITREE_SDK2_LIB}")
+)
+
+if(NOT UNITREE_SDK2_LIB)
+  message(FATAL_ERROR "No se encontró la librería unitree_sdk2 en /opt/unitree_robotics/lib")
+endif()
+
+
 
 # --------------------------------------------------------------------
 # 1) Crear la librería 'unitree_ros2'
@@ -45,6 +69,10 @@ add_library(unitree_ros2 SHARED
 ament_target_dependencies(unitree_ros2
   ${DEPENDENCY_LIST}
 )
+
+#  Enlazar unitree_sdk2 manualmente
+target_link_libraries(unitree_ros2 ${UNITREE_SDK2_LIB})
+
 
 # Instalar la librería en lib/
 install(TARGETS unitree_ros2
@@ -114,6 +142,7 @@ add_executable(sport_mode_ctrl
 )
 ament_target_dependencies(sport_mode_ctrl ${DEPENDENCY_LIST})
 target_link_libraries(sport_mode_ctrl unitree_ros2)
+
 
 # --------------------------------------------------------------------
 # 3) Instalar los ejecutables
