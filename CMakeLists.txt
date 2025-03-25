@@ -40,7 +40,7 @@ set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
 
 ##
 
-message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
+# message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
 
 
 # Lista de dependencias en bloque
