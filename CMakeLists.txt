@@ -44,12 +44,12 @@ message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
 set(DEPENDENCY_LIST
   unitree_hg
   unitree_api
-  unitree_go
   rclcpp
   std_msgs
   rosbag2_cpp
 )
 
+# del anterior, se elimino unitree_go
 
 
 find_library(UNITREE_SDK2_LIB
@@ -79,6 +79,9 @@ ament_target_dependencies(unitree_ros2
 
 #  Enlazar unitree_sdk2 manualmente
 target_link_libraries(unitree_ros2 ${UNITREE_SDK2_LIB})
+
+# Aquí se agrega la ruta de los headers de unitree_go
+target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src/unitree/unitree_go)
 
 
 # Instalar la librería en lib/
