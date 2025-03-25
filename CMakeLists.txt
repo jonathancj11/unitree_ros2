@@ -1,3 +1,10 @@
+cmake_minimum_required(VERSION 3.5)
+project(unitree_ros2)
+
+
+cmake_policy(SET CMP0015 NEW)
+cmake_policy(SET CMP0081 NEW)
+
 # Incluir directorios e indicar libs si fuera necesario
 include_directories(include include/common include/nlohmann)
 link_directories(src)
@@ -5,8 +12,6 @@ link_directories(src)
 include_directories(/opt/unitree_robotics/include)
 link_directories(/opt/unitree_robotics/lib)
 
-cmake_minimum_required(VERSION 3.5)
-project(unitree_ros2)
 
 # Opcional: C y C++ por defecto
 if(NOT CMAKE_C_STANDARD)
@@ -31,8 +36,6 @@ find_package(rosbag2_cpp REQUIRED)
 set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
 
 # find_package(unitree_go REQUIRED)
-
-set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
 
 
 ##
@@ -81,7 +84,9 @@ ament_target_dependencies(unitree_ros2
 target_link_libraries(unitree_ros2 ${UNITREE_SDK2_LIB})
 
 # Aquí se agrega la ruta de los headers de unitree_go
-target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src/unitree/unitree_go)
+target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src/unitree)
+
+
 
 
 # Instalar la librería en lib/
