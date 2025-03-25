@@ -30,10 +30,10 @@ find_package(rosbag2_cpp REQUIRED)
 
 set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
 
-find_package(unitree_go REQUIRED)
+# find_package(unitree_go REQUIRED)
 
-message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
-message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
+set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
+
 
 ##
 
