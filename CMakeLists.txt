@@ -27,8 +27,15 @@ find_package(unitree_api REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
+
+set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
+
 find_package(unitree_go REQUIRED)
 
+message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
+message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
+
+##
 
 message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
 
