@@ -84,8 +84,10 @@ ament_target_dependencies(unitree_ros2
 target_link_libraries(unitree_ros2 ${UNITREE_SDK2_LIB})
 
 # Aquí se agrega la ruta de los headers de unitree_go
-target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src)
-
+target_include_directories(unitree_ros2 PUBLIC 
+  /opt/workspace/src/unitree_ros2/cyclonedds_ws/src 
+  /opt/workspace/install/unitree_go/include
+)
 
 
 # Instalar la librería en lib/
