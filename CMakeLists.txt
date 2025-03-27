@@ -35,7 +35,7 @@ find_package(rosbag2_cpp REQUIRED)
 
 set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
 
-find_package(unitree_go REQUIRED)
+#find_package(unitree_go REQUIRED)
 
 
 ##
@@ -45,7 +45,6 @@ find_package(unitree_go REQUIRED)
 
 # Lista de dependencias en bloque
 set(DEPENDENCY_LIST
-  unitree_go
   unitree_hg
   unitree_api
   rclcpp
@@ -85,9 +84,7 @@ ament_target_dependencies(unitree_ros2
 target_link_libraries(unitree_ros2 ${UNITREE_SDK2_LIB})
 
 # Aquí se agrega la ruta de los headers de unitree_go
-target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src/unitree)
-# nuevo
-target_include_directories(unitree_ros2 PUBLIC /opt/workspace/install/unitree_go/include)
+target_include_directories(unitree_ros2 PUBLIC /opt/workspace/src/unitree_ros2/cyclonedds_ws/src)
 
 
 
