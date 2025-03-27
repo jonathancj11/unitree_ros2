@@ -80,7 +80,7 @@ ament_package()
 
 
 # Instalar los archivos generados por rosidl (ajusta la ruta según cómo se generen)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generated_interfaces/unitree_go
-        DESTINATION include
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generated_interfaces
+        DESTINATION include/unitree_go
         FILES_MATCHING PATTERN "*.hpp")
 
