@@ -33,14 +33,12 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 
-set(CMAKE_PREFIX_PATH "/opt/workspace/install;${CMAKE_PREFIX_PATH}")
+set(CMAKE_PREFIX_PATH "/opt/unitree_ws/install;${CMAKE_PREFIX_PATH}")
 
 find_package(unitree_go REQUIRED)
 
 
-##
-
-# message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
+message(STATUS "unitree_go include directories: ${unitree_go_INCLUDE_DIRS}")
 
 
 # Lista de dependencias en bloque
