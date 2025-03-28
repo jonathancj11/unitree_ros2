@@ -48,10 +48,8 @@ set(DEPENDENCY_LIST
   rclcpp
   std_msgs
   rosbag2_cpp
+  unitree_go
 )
-
-# del anterior, se elimino unitree_go
-
 
 find_library(UNITREE_SDK2_LIB
   NAMES unitree_sdk2
