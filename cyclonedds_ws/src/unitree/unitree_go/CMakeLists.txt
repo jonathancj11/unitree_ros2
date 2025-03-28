@@ -87,14 +87,3 @@ install(
     include/unitree_go/msg
   FILES_MATCHING PATTERN "*.hpp"
 )
-
-
-
-
-
-
-
-
-
-
-
